@@ -7,7 +7,6 @@
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='/')
-        i.fa.fa-beer
         | Wood N' Shoes
     .collapse.navbar-collapse
       ul.nav.navbar-nav
@@ -18,17 +17,23 @@
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title === 'Login') ? 'active' : undefined)
-            a(href='/login') Login
+            a(href='/login')
+              i.fa.fa-user
+              | Login
+
           li(class=(title === 'Create Account') ? 'active' : undefined)
-            a(href='/signup') Create Account
+            a(href='/signup')
+              i.fa.fa-user-plus
+              | Create Account
         else
+          li(class=(title === 'Login') ? 'active' : undefined)
+            a(href='/myadverts')
+              i.fa.fa-archive
+              | My adverts
           li.dropdown(class=(title === 'Account Management') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')
-              if user.profile.picture
-                img(src=user.profile.picture)
-              else
-                img(src=user.gravatar(60))
-              span= user.profile.name || user.email || user.id
+              i.fa.fa-cog
+              span= user.profile.name || user.email
               i.caret
             ul.dropdown-menu
               li
