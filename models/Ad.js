@@ -3,14 +3,20 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 
 const adSchema = new mongoose.Schema({
-  shoesBrand: String,
-  shoesColor: String,
-  shoesRates: Number,
-  shoesDate: Date,
-  shoesLocation: String,
-  shoesGender: String,
-  shoesPrice: Number,
-  shoesSize : String,  
+  description: String,
+  title: String,
+  shoes: {
+    brand: String,
+    color: String,
+    location: String,
+    gender: String,
+    price: Number,
+    size: String,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 }, { timestamps: true });
 
 
