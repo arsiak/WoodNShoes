@@ -38,7 +38,6 @@ block content
 
   .page-header
     h3 Change Password
-
   form.form-horizontal(action='/account/password', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
@@ -55,18 +54,36 @@ block content
           i.fa.fa-lock
           | Change Password
 
+
+
   .page-header
-    h3 Linked Accounts
-  .form-horizontal
+    h3 My adverts
+  form.form-horizontal(action='/account/password', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       .col-sm-offset-3.col-sm-4
-        if user.google
-          p: a.text-danger(href='/account/unlink/google') Unlink your Google account
-        else
-          p: a(href='/auth/google') Link your Google account
-      .col-sm-offset-3.col-sm-4
-        if user.facebook
-          p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
-        else
-          p: a(href='/auth/facebook') Link your Facebook account
-      .col-sm-offset-3.col-sm-4
+        a.btn.btn-primary(href="/account/add")
+          i.fa.fa-plus
+          | I want to add a new ad !
+      .col-sm-4
+        a.btn.btn-primary(href="/account/myads")
+          i.fa.fa-archive
+          | I want to consult my adverts !
+
+  //
+  //
+  //.page-header
+  //    h3 Linked Accounts
+  //    .form-horizontal
+  //      .form-group
+  //        .col-sm-offset-3.col-sm-4
+  //          if user.google
+  //            p: a.text-danger(href='/account/unlink/google') Unlink your Google account
+  //          else
+  //            p: a(href='/auth/google') Link your Google account
+  //        .col-sm-offset-3.col-sm-4
+  //          if user.facebook
+  //            p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
+  //          else
+  //            p: a(href='/auth/facebook') Link your Facebook account
+  //        .col-sm-offset-3.col-sm-4

@@ -29,7 +29,6 @@ dotenv.load({ path: '.env.example' });
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const adController = require('./controllers/ad');
-const contactController = require('./controllers/contact');
 
 /**
  * API keys and Passport configuration.
@@ -124,8 +123,6 @@ app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
-app.get('/contact', contactController.getContact);
-app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
@@ -134,7 +131,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 
 app.post('/account/add', passportConfig.isAuthenticated, adController.postAd);
 app.get('/account/add', passportConfig.isAuthenticated, adController.render);
-
+app.get('/account/myads', passportConfig.isAuthenticated, adController.getMyAds);
 /**
  * OAuth authentication routes. (Sign in)
  */
@@ -161,3 +158,4 @@ app.listen(app.get('port'), () => {
 });
 
 module.exports = app;
+
