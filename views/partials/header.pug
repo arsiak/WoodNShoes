@@ -5,16 +5,18 @@
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
-        span.icon-bar
+        span.icon-baruser
       a.navbar-brand(href='/')
         | Wood N' Shoes
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li(class=(title === 'Home') ? 'active' : undefined)
           a(href='/') Home
-        li(class=(title === 'Contact') ? 'active' : undefined)
-          a(href='/contact') Contact
       ul.nav.navbar-nav.navbar-right
+        li(class=(title === 'Add') ? 'active' : undefined)
+          a(href='/account/add')
+            i.fa.fa-plus-square
+            | Place an ad
         if !user
           li(class=(title === 'Login') ? 'active' : undefined)
             a(href='/login')
@@ -26,10 +28,10 @@
               i.fa.fa-user-plus
               | Create Account
         else
-          li(class=(title === 'Login') ? 'active' : undefined)
-            a(href='/myadverts')
+          li(class=(title === 'My Ads') ? 'active' : undefined)
+            a(href='/account/myads')
               i.fa.fa-archive
-              | My adverts
+              | My ads
           li.dropdown(class=(title === 'Account Management') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               i.fa.fa-cog

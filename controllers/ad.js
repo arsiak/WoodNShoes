@@ -29,3 +29,20 @@ exports.render = (req, res) => {
     title: 'Add'
   });
 };
+
+exports.getMyAds = (req, res) => {
+  res.render('account/myads', {
+    title: 'My Ads'
+  });
+};
+
+const query = Ad.find();
+query.exec((err, ads) => {
+  if (err) { throw err; }
+  let ad;
+  for (let i = 0, l = ads.length; i < l; i++) {
+    ad = ads[i];
+    console.log(ad);
+  }
+});
+
