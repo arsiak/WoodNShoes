@@ -13,7 +13,7 @@ exports.postAd = (req, res, next) => {
       price: req.body.price,
       size: req.body.size,
     },
-    user: req.body.user
+    user: req.user
   });
 
 
@@ -30,19 +30,8 @@ exports.render = (req, res) => {
   });
 };
 
+
+
 exports.getMyAds = (req, res) => {
-  res.render('account/myads', {
-    title: 'My Ads'
-  });
+  Ad.find((err, docs) => {res.render('account/myads', {title: 'My ads', ads: docs});}).where("user",req.user);
 };
-
-const query = Ad.find();
-query.exec((err, ads) => {
-  if (err) { throw err; }
-  let ad;
-  for (let i = 0, l = ads.length; i < l; i++) {
-    ad = ads[i];
-    console.log(ad);
-  }
-});
-

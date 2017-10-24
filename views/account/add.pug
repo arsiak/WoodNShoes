@@ -5,7 +5,6 @@ block content
         h3 Add Advert
     form.form-horizontal(id='advert-form', method='POST')
         input(type='hidden', name='_csrf', value=_csrf)
-        input(type='hidden', name='user', value=user._id)
         .form-group
             label.col-sm-3.control-label(for='title') Title
             .col-sm-7

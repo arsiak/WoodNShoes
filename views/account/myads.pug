@@ -1,3 +1,15 @@
 extend ../layout
 
-
+block content
+  each ad in ads
+    div
+      p Title : #{ad.title}
+      p Description : #{ad.description}
+      p Chaussures :
+        ul
+          li Brand : #{ad.shoes.brand}
+          li Color : #{ad.shoes.color}
+          li Gender : #{ad.shoes.gender}
+          li Price : #{ad.shoes.price}
+          li Size : #{ad.shoes.size}
+    br
