@@ -132,17 +132,19 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 app.post('/account/add', passportConfig.isAuthenticated, adController.postAd);
 app.get('/account/add', passportConfig.isAuthenticated, adController.render);
 app.get('/account/myads', passportConfig.isAuthenticated, adController.getMyAds);
-/**
- * OAuth authentication routes. (Sign in)
- */
-app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
-});
-app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
-app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
-});
+
+
+// /**
+//  * OAuth authentication routes. (Sign in)
+//  */
+// app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
+// app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
+//   res.redirect(req.session.returnTo || '/');
+// });
+// app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
+// app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+//   res.redirect(req.session.returnTo || '/');
+// });
 
 /**
  * Error Handler.
