@@ -1,15 +1,50 @@
 extend ../layout
 
 block content
+
+  if ads.length == 0
+    p You have no ads bro !
+  else
   each ad in ads
-    div
-      p Title : #{ad.title}
-      p Description : #{ad.description}
-      p Chaussures :
-        ul
-          li Brand : #{ad.shoes.brand}
-          li Color : #{ad.shoes.color}
-          li Gender : #{ad.shoes.gender}
-          li Price : #{ad.shoes.price}
-          li Size : #{ad.shoes.size}
-    br
+
+    .page-header
+      h3 #{ad.title}
+    form.form-horizontal(action='/account/myads/update/'+ ad._id, method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        label.col-sm-3.control-label(for='title') Title
+        .col-sm-7
+          input.form-control(type='text', name='title', id='title', value=ad.title)
+      .form-group
+        label.col-sm-3.control-label(for='description') Description
+        .col-sm-7
+          input.form-control(type='text', name='description', id='description', value=ad.description)
+      .form-group
+        label.col-sm-3.control-label(for='size') Shoes size
+        .col-sm-7
+          input.form-control(type='text', name='size', id='size', value=ad.shoes.size)
+      .form-group
+        label.col-sm-3.control-label(for='size') Shoes brand
+        .col-sm-7
+          input.form-control(type='text', name='brand', id='brand', value=ad.shoes.brand)
+      .form-group
+        label.col-sm-3.control-label(for='gender') Shoes gender
+        .col-sm-7
+          input.form-control(type='text', name='gender', id='gender', value=ad.shoes.gender)
+      .form-group
+        label.col-sm-3.control-label(for='price') Shoes price
+        .col-sm-7
+          input.form-control(type='number', name='price', id='price', value=ad.shoes.price)
+      .form-group
+        .col-sm-offset-3.col-sm-4
+          button.btn.btn.btn-primary(type='submit')
+            i.fa.fa-pencil
+            | Update !
+
+    form.form-horizontal(action='/account/myads/delete/' + ad._id, method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        .col-sm-offset-3.col-sm-4
+          button.btn.btn.btn-primary(type='submit')
+            i.fa.fa-pencil
+            | Delete !
