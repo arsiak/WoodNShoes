@@ -90,6 +90,7 @@ app.use((req, res, next) => {
 });
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
+
 app.use((req, res, next) => {
   res.locals.user = req.user;
   next();
@@ -127,11 +128,12 @@ app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
-app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
 app.post('/account/add', passportConfig.isAuthenticated, adController.postAd);
 app.get('/account/add', passportConfig.isAuthenticated, adController.render);
 app.get('/account/myads', passportConfig.isAuthenticated, adController.getMyAds);
+app.post('/account/myads/delete/:id', passportConfig.isAuthenticated, adController.postDeleteAd);
+app.post('/account/myads/update/:id', passportConfig.isAuthenticated, adController.postUpdateAd);
 
 
 // /**
