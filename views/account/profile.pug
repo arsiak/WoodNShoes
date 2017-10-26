@@ -1,5 +1,7 @@
 extends ../layout
 
+
+
 block content
   .page-header
     h3 Profile Information
@@ -26,6 +28,10 @@ block content
         label.radio.col-sm-3
           input(type='radio', checked=user.profile.gender=='other', name='gender', value='other', data-toggle='radio')
           span Other
+    .form-group
+      label.col-sm-3.control-label Phone
+      .col-sm-6
+        input(type='number' pattern="^\d{10}$")
     .form-group
       label.col-sm-3.control-label(for='location') Location
       .col-sm-7

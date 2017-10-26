@@ -22,6 +22,18 @@ block content
             .col-sm-7
                 input.form-control(type='number', name='size', id='size', placeholder='Size', required)
         .form-group
+          label.col-sm-3.control-label Gender
+          .col-sm-6
+            label.radio.col-sm-3
+              input(type='radio', name='gender', value='male', data-toggle='radio')
+              span Male
+            label.radio.col-sm-3
+              input(type='radio', name='gender', value='female', data-toggle='radio')
+              span Female
+            label.radio.col-sm-3
+              input(type='radio',checked name='gender', value='other', data-toggle='radio')
+              span Other
+        .form-group
             .col-sm-offset-3.col-sm-7
                 button.btn.btn-success(type='submit')
                     i.fa.fa-plus
