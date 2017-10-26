@@ -1,4 +1,5 @@
 const Ad = require('../models/Ad');
+const User = require('../models/User');
 
 
 exports.postAd = (req, res, next) => {
@@ -67,4 +68,10 @@ exports.postUpdateAd = (req, res) => {
       res.redirect('/account/myads');
     });
   });
+};
+
+exports.getAdInfo = (req, res) =>{
+  Ad.findById(req.param('id')).populate('user').exec((err, docs) =>{
+    res.render('adInfo', {title: 'Ad', ad: docs});
+  })
 };

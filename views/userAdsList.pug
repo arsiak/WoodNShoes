@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  if ads.length == 0
+    p You have no ads bro !
+  else
+  each ad in ads
+    p #{ad.title}
+    a(href='/ad/'+ad._id) link

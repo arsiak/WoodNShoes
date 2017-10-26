@@ -43,10 +43,14 @@ block content
                   <i class="fa fa-search" aria-hidden="true"></i>
     h3 Derniers ajouts
     if ads.length == 0
-      p There is no ads bro !
+      p There is no ads bro, but you can place the first ad :)
     else
     each ad in ads
       .page-header
-        h3 #{ad.title}
-      p #{ad.createdAt}
-      p #{new Date}
+      - var date = new Date
+        a(href='/ad/'+ad._id)
+          h3 #{ad.title}
+      if(ad.createdAt.getDay() == date.getDay())
+        p Today, #{ad.createdAt.getHours()}:#{ad.createdAt.getMinutes()}
+      else
+        p #{ad.createdAt.toLocaleDateString()}

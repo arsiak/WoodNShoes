@@ -1,0 +1,10 @@
+extends layout
+
+
+block content
+  .page-header
+    h3 #{user.email}
+    p #{user.profile.name}
+    p #{user.profile.gender}
+    p #{user.profile.phone}
+    a(href='/user/'+user._id+'/ads') I want to consult all #{user.profile.name}'s ads
