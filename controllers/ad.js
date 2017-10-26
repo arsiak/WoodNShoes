@@ -12,7 +12,7 @@ exports.postAd = (req, res, next) => {
       location: req.body.location,
       gender: req.body.gender,
       price: req.body.price,
-      size: req.body.size,
+      size: req.body.size
     },
     user: req.user
   });
@@ -32,11 +32,17 @@ exports.render = (req, res) => {
 };
 
 exports.getMyAds = (req, res) => {
-  Ad.find((err, docs) => {res.render('account/myads', {title: 'My ads', ads: docs});}).where("user",req.user);
+  Ad.find((err, docs) => {
+    res.render('account/myads', {title: 'My ads', ads: docs});
+  }).where("user",req.user).sort({'createdAt': -1});
 };
 
 exports.postDeleteAd = (req, res) => {
-  Ad.remove({_id: req.param('id')}, function(err,removed) {});
+  Ad.remove({_id: req.param('id')}, function(err,removed) {
+    if(err)
+      return next(err);
+  });
+  req.flash('success',{msg : 'Your ad has been deleted'})
   res.redirect('/account/myads');
 };
 
