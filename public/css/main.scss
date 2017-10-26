@@ -70,3 +70,15 @@ textarea {
 .fa {
   margin-right: 6px;
 }
+
+
+// MAP
+#map-canvas {
+   margin: 0;
+   padding: 0;
+   height: 400px;
+   max-width: none;
+}
+#map-canvas img {
+   max-width: none !important;
+}
