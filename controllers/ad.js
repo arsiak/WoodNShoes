@@ -5,14 +5,13 @@ exports.postAd = (req, res, next) => {
   console.log('test');
   const ad = new Ad({
     description: req.body.descr,
-    title: req.body.title,
+    title: req.body.title.toUpperCase(),
     img : {
       data : req.body.img,
       contentType : '',
     },
     shoes: {
-      brand: req.body.brand,
-      color: req.body.color,
+      brand: req.body.brand.toUpperCase(),
       location: req.body.location,
       gender: req.body.gender,
       price: req.body.price,

@@ -73,9 +73,21 @@ textarea {
   margin-right: 6px;
 }
 
+a:hover{
+
+color : darken(orange,10);
+
+}
 .btn{
   background-color : orange;
   border-color : green;
+  color : white;
+}
+
+.btn:hover{
+  text-decoration: none;
+  color : white;
+  background-color : darken(orange, 10);
 }
 
 a {

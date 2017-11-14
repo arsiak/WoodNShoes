@@ -32,15 +32,19 @@
               i.fa.fa-archive
               | My ads
           li.dropdown(class=(title === 'Account Management') ? 'active' : undefined)
-            a.dropdown-toggle
+            a.dropdown-toggle(href='', data-toggle='dropdown')
               i.fa.fa-cog
               span= user.profile.name || user.email
               i.caret
             ul.dropdown-menu
               li
-                a(href='/account') My Account
+                a(href='/account')
+                  i.fa.fa-user
+                  span= 'My Account'
               li.divider
               li
-                a(href='/logout') Logout
+                a(href='/logout')
+                  i.fa.fa-sign-out
+                  span= 'Log out'
         li(class=(title === 'What ?') ? 'active' : undefined)
           a(href='/') What is Wood N' Shoes ?
