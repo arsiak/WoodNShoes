@@ -22,6 +22,14 @@ block content
       .col-sm-7
         input.form-control(type='number', name='size', id='size', placeholder='Size', required)
     .form-group
+      label.col-sm-3.control-label(for='size') Price per day
+      .col-sm-7
+        input.form-control(type='number', name='price', id='price', placeholder='Price', required)
+    .form-group
+      label.col-sm-3.control-label(for='size') Size
+      .col-sm-7
+        input.form-control(type='file', name='img', id='img', accept='image/*')
+    .form-group
       label.col-sm-3.control-label Gender
       .col-sm-6
         label.radio.col-sm-3
@@ -31,8 +39,8 @@ block content
           input(type='radio', name='gender', value='female', data-toggle='radio')
           span Female
         label.radio.col-sm-3
-          input(type='radio',checked name='gender', value='other', data-toggle='radio')
-          span Other
+          input(type='radio', checked name='gender', value='other', data-toggle='radio')
+          span Both
     .form-group
       .col-sm-offset-3.col-sm-7
         button.btn.btn-success(type='submit')

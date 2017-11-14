@@ -383,7 +383,7 @@ exports.getUserInfo = (req, res) => {
 };
 
 exports.getAllAds = (req, res) => {
-  Ad.find().where('user').equals(req.param('id')).exec(function(err, docs){
-    res.render('userAdsList', {title : 'Ads list', ads : docs});
-  });
+  Ad.find((err, docs) => {
+    res.render('userAdsList', {title: 'Ads list', ads: docs});
+  }).where("user",req.param('id')).sort({'createdAt': -1});
 };
