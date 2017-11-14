@@ -7,12 +7,11 @@
         span.icon-bar
         span.icon-baruser
       a.navbar-brand(href='/')
-        | Wood N' Shoes
+        | W&S
     .collapse.navbar-collapse
-      ul.nav.navbar-nav
+      ul.nav.navbar-nav.navbar-right
         li(class=(title === 'Home') ? 'active' : undefined)
           a(href='/') Home
-      ul.nav.navbar-nav.navbar-right
         li(class=(title === 'Add') ? 'active' : undefined)
           a(href='/account/add')
             i.fa.fa-plus-square
@@ -33,7 +32,7 @@
               i.fa.fa-archive
               | My ads
           li.dropdown(class=(title === 'Account Management') ? 'active' : undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
+            a.dropdown-toggle
               i.fa.fa-cog
               span= user.profile.name || user.email
               i.caret
@@ -43,6 +42,5 @@
               li.divider
               li
                 a(href='/logout') Logout
-
-        li(class=(title === 'Home') ? 'active' : undefined)
+        li(class=(title === 'What ?') ? 'active' : undefined)
           a(href='/') What is Wood N' Shoes ?

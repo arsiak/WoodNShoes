@@ -1,14 +1,20 @@
 extends layout
 
 block content
-  .page-header
-    h3 #{ad.title}
-    p #{ad.description}
-    p #{ad.shoes.gender}
-    p #{ad.shoes.brand}
-    p #{ad.shoes.price}
-    p #{ad.shoes.color}
-    h3 Owner
-    a(href='/user/'+ad.user._id) #{ad.user.profile.name}
-    p #{ad.user.profile.phone}
-    a(href='/user/'+ad.user._id+'/ads') I want to consult all #{user.profile.name}'s ads
+
+  h3 #{ad.title}
+  p #{ad.description}
+  p Brand : #{ad.shoes.brand}
+  p Size : #{ad.shoes.size}
+  p Gender : #{ad.shoes.gender}
+    if(ad.shoes.gender === 'male')
+      | &nbsp;
+      i.fa.fa-mars
+    else
+      | &nbsp;
+      i.fa.fa-venus
+  p Price : #{ad.shoes.price}
+  h3 Owner
+  a(href='/user/'+ad.user._id) #{ad.user.profile.name}
+  p #{ad.user.profile.phone}
+  a(href='/user/'+ad.user._id+'/ads') I want to consult all #{ad.user.profile.name}'s ads

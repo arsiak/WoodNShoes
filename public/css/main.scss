@@ -5,6 +5,7 @@
 
 @import "themes/default/default";
 
+@import "cards.css";
 @import "tmp.css";
 
 // Scaffolding
@@ -42,6 +43,7 @@ textarea {
 // Navbar
 // -------------------------
 
+
 .navbar-nav img {
   width: 30px;
   height: 30px;
@@ -69,4 +71,13 @@ textarea {
 
 .fa {
   margin-right: 6px;
+}
+
+.btn{
+  background-color : orange;
+  border-color : green;
+}
+
+a {
+  color : orange;
 }

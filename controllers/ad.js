@@ -1,12 +1,15 @@
 const Ad = require('../models/Ad');
 const User = require('../models/User');
 
-
 exports.postAd = (req, res, next) => {
   console.log('test');
   const ad = new Ad({
     description: req.body.descr,
     title: req.body.title,
+    img : {
+      data : req.body.img,
+      contentType : '',
+    },
     shoes: {
       brand: req.body.brand,
       color: req.body.color,
