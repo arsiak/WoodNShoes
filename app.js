@@ -18,6 +18,10 @@ const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
+const multer = require('multer');
+const upload = multer({
+  dest: 'public/uploads/' // this saves your file into a directory called "uploads"
+});
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
@@ -81,6 +85,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+app.post('/account/add', passportConfig.isAuthenticated, upload.single('picture'), adController.postAd);
 app.use((req, res, next) => {
   if (req.path === '/api/upload') {
     next();
@@ -129,7 +135,8 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 
-app.post('/account/add', passportConfig.isAuthenticated, adController.postAd);
+
+
 app.get('/account/add', passportConfig.isAuthenticated, adController.render);
 app.get('/account/myads', passportConfig.isAuthenticated, adController.getMyAds);
 app.post('/account/myads/delete/:id', passportConfig.isAuthenticated, adController.postDeleteAd);

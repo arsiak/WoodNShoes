@@ -65,6 +65,7 @@ block content
 
             p Size : #{ad.shoes.size}
             p #{ad.shoes.price} $ per day
+            img(src="/uploads/"+ad.shoes.picture)
           .card-footer
             if(ad.createdAt.getDay() == date.getDay())
               p Today, #{ad.createdAt.getHours()}:#{ad.createdAt.getMinutes()}

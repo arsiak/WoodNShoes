@@ -2,10 +2,11 @@ const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 
+
+
 const adSchema = new mongoose.Schema({
   description: String,
   title: String,
-  img: { data: Buffer, contentType: String },
   shoes: {
     brand: String,
     color: String,
@@ -13,6 +14,7 @@ const adSchema = new mongoose.Schema({
     gender: String,
     price: Number,
     size: String,
+    picture : String
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

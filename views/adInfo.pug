@@ -3,6 +3,7 @@ extends layout
 block content
 
   h3 #{ad.title}
+  img(src="/uploads/" + ad.shoes.picture)
   p #{ad.description}
   p Brand : #{ad.shoes.brand}
   p Size : #{ad.shoes.size}
@@ -10,9 +11,12 @@ block content
     if(ad.shoes.gender === 'male')
       | &nbsp;
       i.fa.fa-mars
-    else
+    else if(ad.shoes.gender ==='female')
       | &nbsp;
       i.fa.fa-venus
+    else
+      | &nbsp;
+      i.fa.fa-neuter
   p Price : #{ad.shoes.price}
   h3 Owner
   a(href='/user/'+ad.user._id) #{ad.user.profile.name}

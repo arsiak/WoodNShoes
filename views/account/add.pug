@@ -3,7 +3,7 @@ extends ../layout
 block content
   .page-header
     h3 Add Advert
-  form.form-horizontal(id='advert-form', method='POST')
+  form.form-horizontal(id='advert-form', method='POST', enctype='multipart/form-data')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       label.col-sm-3.control-label(for='title') Title
@@ -28,7 +28,7 @@ block content
     .form-group
       label.col-sm-3.control-label(for='size') Size
       .col-sm-7
-        input.form-control(type='file', name='img', id='img', accept='image/*')
+        input.form-control(type='file', name='picture', id='picture', accept='image/*')
     .form-group
       label.col-sm-3.control-label Gender
       .col-sm-6
