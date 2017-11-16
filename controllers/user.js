@@ -3,6 +3,7 @@ const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
 const passport = require('passport');
 const User = require('../models/User');
+const Ad = require('../models/Ad');
 
 /**
  * GET /login
@@ -140,7 +141,7 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.name = req.body.name || '';
     user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
+    user.profile.phone = req.body.phone || '';
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
@@ -373,4 +374,16 @@ exports.postForgot = (req, res, next) => {
     .then(sendForgotPasswordEmail)
     .then(() => res.redirect('/forgot'))
     .catch(next);
+};
+
+exports.getUserInfo = (req, res) => {
+  User.findById(req.param('id'), (err, docs) =>{
+    res.render('user', {title : 'User', user : docs});
+  });
+};
+
+exports.getAllAds = (req, res) => {
+  Ad.find((err, docs) => {
+    res.render('userAdsList', {title: 'Ads list', ads: docs});
+  }).where("user",req.param('id')).sort({'createdAt': -1});
 };

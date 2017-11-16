@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(cards.css);
 @import url(tmp.css);
 html {
   font-family: sans-serif;
@@ -3937,22 +3938,22 @@ tbody.collapse.in {
       margin-right: 0; } }
 
 .navbar-default {
-  background-color: #e57100;
-  border-color: #c46100; }
+  background-color: darkgreen;
+  border-color: #004300; }
   .navbar-default .navbar-brand {
     color: white; }
     .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-      color: #4da5f4;
+      color: white;
       background-color: transparent; }
   .navbar-default .navbar-text {
     color: #fafafa; }
   .navbar-default .navbar-nav > li > a {
     color: white; }
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-      color: green;
+      color: orange;
       background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    color: green;
+    color: orange;
     background-color: transparent; }
   .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
     color: #ccc;
@@ -3965,18 +3966,18 @@ tbody.collapse.in {
       background-color: #888; }
   .navbar-default .navbar-collapse,
   .navbar-default .navbar-form {
-    border-color: #c46100; }
+    border-color: #004300; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: transparent;
-    color: green; }
+    color: orange; }
   @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
       color: white; }
       .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: green;
+        color: orange;
         background-color: transparent; }
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-      color: green;
+      color: orange;
       background-color: transparent; }
     .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
       color: #ccc;
@@ -3984,11 +3985,11 @@ tbody.collapse.in {
   .navbar-default .navbar-link {
     color: white; }
     .navbar-default .navbar-link:hover {
-      color: green; }
+      color: orange; }
   .navbar-default .btn-link {
     color: white; }
     .navbar-default .btn-link:hover, .navbar-default .btn-link:focus {
-      color: green; }
+      color: orange; }
     .navbar-default .btn-link[disabled]:hover, .navbar-default .btn-link[disabled]:focus,
     fieldset[disabled] .navbar-default .btn-link:hover,
     fieldset[disabled] .navbar-default .btn-link:focus {
@@ -8884,9 +8885,6 @@ button.close {
 .btn-link {
   box-shadow: none; }
 
-.btn-default, .btn-default:focus {
-  background-image: linear-gradient(to bottom, #ffffff 60%, #f8f8f8 100%); }
-
 .form-control:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset; }
 
@@ -8898,7 +8896,7 @@ button.close {
   border: 0;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); }
   .navbar-default .navbar-nav > li > a {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
     transition: all 0.2s linear; }
@@ -8939,6 +8937,7 @@ textarea {
 .fa {
   margin-right: 6px; }
 
+
 #map-canvas {
   margin: 0;
   padding: 0;
@@ -8947,3 +8946,20 @@ textarea {
 
 #map-canvas img {
   max-width: none !important; }
+
+a:hover {
+  color: #cc8400; }
+
+.btn {
+  background-color: orange;
+  border-color: green;
+  color: white; }
+
+.btn:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #cc8400; }
+
+a {
+  color: orange; }
+

@@ -136,6 +136,9 @@ app.get('/account/add', passportConfig.isAuthenticated, adController.render);
 app.get('/account/myads', passportConfig.isAuthenticated, adController.getMyAds);
 app.post('/account/myads/delete/:id', passportConfig.isAuthenticated, adController.postDeleteAd);
 app.post('/account/myads/update/:id', passportConfig.isAuthenticated, adController.postUpdateAd);
+app.get('/ad/:id', adController.getAdInfo);
+app.get('/user/:id', userController.getUserInfo);
+app.get('/user/:id/ads', userController.getAllAds);
 
 
 // /**

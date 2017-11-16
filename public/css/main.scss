@@ -5,6 +5,7 @@
 
 @import "themes/default/default";
 
+@import "cards.css";
 @import "tmp.css";
 
 // Scaffolding
@@ -42,6 +43,7 @@ textarea {
 // Navbar
 // -------------------------
 
+
 .navbar-nav img {
   width: 30px;
   height: 30px;
@@ -71,7 +73,6 @@ textarea {
   margin-right: 6px;
 }
 
-
 // MAP
 #map-canvas {
    margin: 0;
@@ -81,4 +82,24 @@ textarea {
 }
 #map-canvas img {
    max-width: none !important;
+
+a:hover{
+
+color : darken(orange,10);
+
+}
+.btn{
+  background-color : orange;
+  border-color : green;
+  color : white;
+}
+
+.btn:hover{
+  text-decoration: none;
+  color : white;
+  background-color : darken(orange, 10);
+}
+
+a {
+  color : orange;
 }
