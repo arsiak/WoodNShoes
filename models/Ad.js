@@ -17,7 +17,8 @@ const adSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  reserved : Boolean
 }, { timestamps: true });
 
 

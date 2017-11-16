@@ -2,7 +2,7 @@ const Ad = require('../models/Ad');
 const User = require('../models/User');
 
 exports.postAd = (req, res, next) => {
-  console.log('test');
+
   const ad = new Ad({
     description: req.body.descr,
     title: req.body.title.toUpperCase(),
@@ -17,7 +17,8 @@ exports.postAd = (req, res, next) => {
       price: req.body.price,
       size: req.body.size
     },
-    user: req.user
+    user: req.user,
+    reserved : false
   });
 
 
@@ -47,6 +48,25 @@ exports.postDeleteAd = (req, res) => {
   });
   req.flash('success',{msg : 'Your ad has been deleted'})
   res.redirect('/account/myads');
+};
+
+
+exports.postReserveAd = (req, res) => {
+  Ad.findById(req.param('id'), (err, ad) => {
+    if (err) { return next(err); }
+    ad.reserved = !ad.reserved;
+    ad.save((err) => {
+      if (err) {
+        if (err.code === 11000) {
+          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+          return res.redirect('/account');
+        }
+        return next(err);
+      }
+      req.flash('success', { msg: 'Your ad has been reserved.' });
+      res.redirect('/account/myads');
+    });
+  });
 };
 
 exports.postUpdateAd = (req, res) => {

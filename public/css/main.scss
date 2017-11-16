@@ -78,6 +78,11 @@ a:hover{
 color : darken(orange,10);
 
 }
+
+#testdiv{
+  display : none;
+}
+
 .btn{
   background-color : orange;
   border-color : green;
@@ -92,4 +97,9 @@ color : darken(orange,10);
 
 a {
   color : orange;
+}
+
+.myad{
+  width : 100%;
+  display : inline;
 }

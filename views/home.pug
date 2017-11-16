@@ -12,30 +12,29 @@ block content
               button.btn.btn-primary(type='submit')
                 <i class="fa fa-search" aria-hidden="true"></i>
 
-            .btn-group(role='group')
-              .dropdown.dropdown-lg
-                button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Refine my search
-                .dropdown-menu.dropdown-menu-right(role='menu')
-                  form.form-horizontal(method='GET')
-                    .form-group
-                      label(for='brands') Brand
-                      input.form-control(type="text" name="brand")
-                    .form-group
-                      label(for='gender') Gender
-                      input(type='radio', name='gender', value='male')
-                      |  Male
-                      input(type='radio', name='gender', value='female')
-                      |  Female
-                      input(type='radio', name='gender', value='other', checked)
-                      |  Both
-                    .form-group
-                      label(for='contain') Size
-                      input.form-control(type='number' name='size' min = "0")
-                    .form-group
-                      label(for='contain') Your maximum budget per day
-                      input.form-control(type='number' name ='budget' min = "0")
-                    button.btn.btn-primary(type='submit')
-                      <i class="fa fa-search" aria-hidden="true"></i>
+            .dropdown.dropdown-lg
+              button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Refine my search
+              .dropdown-menu.dropdown-menu-right(role='menu')
+                form.form-horizontal(method='GET')
+                  .form-group
+                    label(for='brands') Brand
+                    input.form-control(type="text" name="brand")
+                  .form-group
+                    label(for='gender') Gender
+                    input(type='radio', name='gender', value='male')
+                    |  Male
+                    input(type='radio', name='gender', value='female')
+                    |  Female
+                    input(type='radio', name='gender', value='other', checked)
+                    |  Both
+                  .form-group
+                    label(for='contain') Size
+                    input.form-control(type='number' name='size' min = "0")
+                  .form-group
+                    label(for='contain') Your maximum budget per day
+                    input.form-control(type='number' name ='budget' min = "0")
+                  button.btn.btn-primary(type='submit')
+                    <i class="fa fa-search" aria-hidden="true"></i>
 
 
 
@@ -49,24 +48,25 @@ block content
       p There is no ads bro, but you can place the first ad :)
     else
     each ad in ads
-      - var date = new Date
-      .card
-        .card-header
-          a(href='/ad/'+ad._id)
-            h3
-              if(ad.shoes.gender === 'male')
-                i.fa.fa-mars(style='color : deepSkyblue')
-              else if (ad.shoes.gender === 'female')
-                i.fa.fa-venus(style='color : pink')
-              else
-                i.fa.fa-neuter(style='color : black')
-              | #{ad.title}
-        .card-body
+      if !ad.reserved
+        - var date = new Date
+        .card
+          .card-header
+            a(href='/ad/'+ad._id)
+              h3
+                if(ad.shoes.gender === 'male')
+                  i.fa.fa-mars(style='color : deepSkyblue')
+                else if (ad.shoes.gender === 'female')
+                  i.fa.fa-venus(style='color : pink')
+                else
+                  i.fa.fa-neuter(style='color : black')
+                | #{ad.title}
+          .card-body
 
-          p Size : #{ad.shoes.size}
-          p #{ad.shoes.price} $ per day
-        .card-footer
-          if(ad.createdAt.getDay() == date.getDay())
-            p Today, #{ad.createdAt.getHours()}:#{ad.createdAt.getMinutes()}
-          else
-            p #{ad.createdAt.toLocaleDateString()}
+            p Size : #{ad.shoes.size}
+            p #{ad.shoes.price} $ per day
+          .card-footer
+            if(ad.createdAt.getDay() == date.getDay())
+              p Today, #{ad.createdAt.getHours()}:#{ad.createdAt.getMinutes()}
+            else
+              p #{ad.createdAt.toLocaleDateString()}
