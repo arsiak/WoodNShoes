@@ -3,7 +3,7 @@ extends layout
 block content
   .container
     .row
-      .col-md-12
+      .col-sm-12
         #adv-search.input-group
           .input-group-btn
             form(method='GET')
@@ -62,10 +62,12 @@ block content
                   i.fa.fa-neuter(style='color : black')
                 | #{ad.title}
           .card-body
-
-            p Size : #{ad.shoes.size}
-            p #{ad.shoes.price} $ per day
-            img(src="/uploads/"+ad.shoes.picture)
+            .card-info
+              p Size : #{ad.shoes.size}
+            .card-info
+              p #{ad.shoes.price} $ per day
+            .card-info-img
+              img(src="/uploads/"+ad.shoes.picture)
           .card-footer
             if(ad.createdAt.getDay() == date.getDay())
               p Today, #{ad.createdAt.getHours()}:#{ad.createdAt.getMinutes()}

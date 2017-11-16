@@ -33,9 +33,40 @@
 }
 
 .card-body {
+    display : flex;
+    flex-direction: row;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
+    align-items: center;
+
+}
+
+.card-info{
+    flex-basis : 35%;
+    flex-grow : 1;
+    flex-shrink : 1;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    vertical-align: middle;
+
+}
+
+.card-info-img{
+    height : 200px;
+    flex-basis : 30%;
+    flex-grow : 1;
+    flex-shrink: 1;
+    border : 1px solid green;
+    text-align : center;
+}
+
+.card-info-img img{
+    padding : auto;
+    max-width : 100%;
+    max-height : 100%;
+
 }
 
 .card-title {
