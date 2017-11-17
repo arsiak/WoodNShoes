@@ -1,11 +1,15 @@
 const Ad = require('../models/Ad');
 
 exports.index = (req, res) => {
-  if(!req.query.gender && !req.query.fast_search){
+  if(!req.query.gender && !req.query.fast_search)
+  {
     Ad.find((err, docs) => {
       res.render('home', {title : 'Home',ads: docs});
     }).sort({'createdAt': -1});
-  }else if(!req.query.fast_search){
+  }
+  else
+  if(!req.query.fast_search)
+  {
     let query = Ad.find((err,docs)=>{});
 
     if(req.query.gender !== "other")
@@ -25,7 +29,9 @@ exports.index = (req, res) => {
     query.exec((err, docs) => {
       res.render('home', {title : 'Home',ads: docs});
     });
-  }else{
+  }
+  else
+  {
     let query = Ad.find((err,docs)=>{});
     if(req.query.fast_search !== ""){
       let regex = new RegExp(".*"+req.query.fast_search+".*", "i");

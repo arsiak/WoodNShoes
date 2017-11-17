@@ -9,6 +9,13 @@ block content
 
     .page-header
       h3 #{ad.title}
+      if ad.reserved
+        h4 This ad is reserved
+      else
+        h4 This ad is not reserved yet
+
+
+      img(src="/uploads/"+ad.shoes.picture)
     form.form-horizontal(action='/account/myads/update/'+ ad._id, method='POST')
       input(type='hidden', name='_csrf', value=_csrf)
       .form-group
@@ -63,3 +70,15 @@ block content
           button.btn.btn.btn-primary(type='submit')
             i.fa.fa-trash
             | Delete !
+
+
+    form.form-horizontal(action='/account/myads/reserve/' + ad._id, method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        .col-sm-offset-3.col-sm-4
+          button.btn.btn.btn-primary(type='submit')
+            i.fa.fa-trash
+            if ad.reserved
+              | Put this ad as available !
+            else
+              | Put this ad as reserved !

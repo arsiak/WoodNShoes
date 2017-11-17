@@ -8949,6 +8949,9 @@ textarea {
 a:hover {
   color: #cc8400; }
 
+#testdiv {
+  display: none; }
+
 .btn {
   background-color: orange;
   border-color: green;
@@ -8961,3 +8964,7 @@ a:hover {
 
 a {
   color: orange; }
+
+.myad {
+  width: 100%;
+  display: inline; }
