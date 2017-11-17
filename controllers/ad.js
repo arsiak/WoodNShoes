@@ -3,13 +3,15 @@ const User = require('../models/User');
 
 
 exports.postAd = (req, res, next) => {
-
+	
+	var loc;
+	loc = req.body.address+", "+req.body.city+", "+req.body.country;
   const ad = new Ad({
     description: req.body.descr,
     title: req.body.title.toUpperCase(),
     shoes: {
       brand: req.body.brand.toUpperCase(),
-      location: req.body.location,
+      location: loc,
       gender: req.body.gender,
       price: req.body.price,
       size: req.body.size,
@@ -23,7 +25,7 @@ exports.postAd = (req, res, next) => {
   ad.save((err) => {
     if (err) { return next(err); }
     req.flash('success', { msg: 'Success! You just add an ad !' });
-    res.redirect('/account');
+    res.redirect('/');
   });
 };
 
