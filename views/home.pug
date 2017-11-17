@@ -66,7 +66,11 @@ block content
           .card-info
             p #{ad.shoes.price} $ per day
           .card-info-img
-            img(src="/uploads/"+ad.shoes.picture)
+            if ad.shoes.picture
+              img(src="/uploads/"+ad.shoes.picture)
+            else
+              img(src="/uploads/no")
+
         .card-footer
           .card-footer-date
             if(ad.createdAt.getDay() == date.getDay())
@@ -76,3 +80,27 @@ block content
           .card-footer-location
             i.fa.fa-map-marker
             | #{ad.shoes.location}
+
+  if pages
+    nav()
+      ul.pagination
+        li.page-item
+          if(current_page > 1)
+            -var previous = current_page - 1
+          else
+            -var previous = 1
+          a.page-link(href=url+'?page=' + previous) Previous
+        - for(var i = 0; i < pages ; i++)
+            - var page = i+1
+            if current_page == page
+              li.page-item.active
+                a.page-link(href= url + '?page='+ page ) #{ i+1 }
+            else
+              li.page-item
+                a.page-link(href= url + '?page=' + page ) #{ i + 1 }
+        if(current_page === pages)
+          -var next = current_page
+        else
+          -var next = current_page +1
+        li.page-item
+            a.page-link(href=url+'?page=' + next) Next

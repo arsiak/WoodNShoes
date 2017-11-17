@@ -5,17 +5,15 @@ block content
   if ads.length == 0
     p There's no shoes in our database at the moment
   else
-  .container
-    .row
-      .col-md-12
-        div#map-canvas
-        
-        p Welcome on our map ! If your browser supports it, we can localize the nearest offers for you!
-        p When it's close enough, click on a marker, you will be able to see the shoes details and get to the offer page.
-        div#infos
-            each ad in ads
-                input(type='hidden', value=ad.shoes.location, class='addresses')
-                input(type='hidden', value=ad.title, class='titles')
-                input(type='hidden', value=ad.description, class='descr')
-                input(type='hidden', value=ad.shoes.picture, class='imgs')
-                input(type='hidden', value=ad._id, class='links')
+    div#map-canvas
+
+    p Welcome on our map ! If your browser supports it, we can localize the nearest offers for you!
+    p When it's close enough, click on a marker, you will be able to see the shoes details and get to the offer page.
+    div#infos
+      each ad in ads
+        if !ad.reserved
+          input(type='hidden', value=ad.shoes.location, class='addresses')
+          input(type='hidden', value=ad.title, class='titles')
+          input(type='hidden', value=ad.description, class='descr')
+          input(type='hidden', value=ad.shoes.picture, class='imgs')
+          input(type='hidden', value=ad._id, class='links')
