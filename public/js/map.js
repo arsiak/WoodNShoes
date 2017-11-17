@@ -1,18 +1,45 @@
 var map;
 var marker;
 var markers = [];
+var infoWindow ;
 
 function initialize() {
 	
   var mapOptions = {
     center: new google.maps.LatLng(40.680898,-8.684059),
-    zoom: 11,
+    zoom: 3,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   
   if(document.getElementById("map-canvas")){
 	  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	  searchAddress();
+	
+	if(document.getElementById('infos')){
+	
+		var infoWindow = new google.maps.InfoWindow({map: map});
+
+        // Try HTML5 geolocation.
+		
+			if (navigator.geolocation) {
+			  navigator.geolocation.getCurrentPosition(function(position) {
+				var pos = {
+				  lat: position.coords.latitude,
+				  lng: position.coords.longitude
+				};
+
+				infoWindow.setPosition(pos);
+				infoWindow.setContent("You're here!");
+				map.setCenter(pos);
+				map.setZoom(9);
+			  }, function() {
+				handleLocationError(true, infoWindow, map.getCenter());
+			  });
+			} else {
+			  // Browser doesn't support Geolocation
+			  handleLocationError(false, infoWindow, map.getCenter());
+			}
+		}
 	}	
 }
 
@@ -50,26 +77,19 @@ function searchAddress() {
 		}
 	  });
 	} else {		
-		var addresses = document.getElementById('addresses').getElementsByTagName('input');
+		var addresses = document.getElementById('infos').getElementsByClassName('addresses');
+		var names = document.getElementById('infos').getElementsByClassName('titles');
+		var des = document.getElementById('infos').getElementsByClassName('descr');
+		var img = document.getElementById('infos').getElementsByClassName('imgs');
+		var lks = document.getElementById('infos').getElementsByClassName('links');
 		var geocoder = new google.maps.Geocoder();
+		infoWindow = new google.maps.InfoWindow();
 		//var markers = [];
 			for(var i = 0; i < addresses.length; i++){
-				geocoder.geocode({address: addresses[i].value}, function(results, status) {
-					if (status == google.maps.GeocoderStatus.OK) {
-					  var myResult = results[0].geometry.location; // reference LatLng value
-					  createMarkers(myResult); // call the function that adds the marker
-					  map.setCenter(myResult);
-					  map.setZoom(4); 
-					}
-				  })
-			}
-			
+				geocoder.geocode({address: addresses[i].value}, createMarkers(addresses[i].value, names[i].value, des[i].value, img[i].value, lks[i].value,));
+			}			
 	}
 }
-
-//function bite(chaine){
-//	alert(chaine);
-//}
 
 function createMarker(latlng) {
 
@@ -87,11 +107,29 @@ function createMarker(latlng) {
 }
 
 
-function createMarkers(latlng) {
+function createMarkers(addr, name, descr, img, lk) {
+	
+	 return function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                title: name,
+            });
+			
+			var content='<h1>'+name+'</h1>' +	
+						'<h2>'+addr+'</h2>' +
+						'<img src="/uploads/'+img+'" title="'+name+'" />' +
+						'<p>'+descr+'</p>' +
+						'<p><a href="../ad/'+lk+'" title="'+name+'" target="_parent">Shoes page</a></p>';
 
-   marker = new google.maps.Marker({
-      map: map,
-      position: latlng
-   });
-
+			
+            (function (marker, addr) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    infoWindow.setContent(content);
+                    infoWindow.open(map, marker);
+                });
+            })(marker, addr);
+        }
+    };
 }
