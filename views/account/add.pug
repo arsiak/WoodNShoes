@@ -42,17 +42,9 @@ block content
           input(type='radio', checked name='gender', value='other', data-toggle='radio')
           span Both
     .form-group
-      label.col-sm-3.control-label(for='address') Address
+      label.col-sm-3.control-label Address
       .col-sm-7
-        input.form-control(type='string', name='address', id='address', placeholder='Address', required)
-    .form-group
-      label.col-sm-3.control-label(for='city') City
-      .col-sm-7
-        input.form-control(type='string', name='city', id='city', placeholder='City', required)
-    .form-group
-      label.col-sm-3.control-label(for='country') Country
-      .col-sm-7
-        input.form-control(type='string', name='country', id='country', placeholder='Country', required)
+        input#user_input_autocomplete_address.form-control(name='user_input_autocomplete_address', placeholder='Start typing your address...')
     .form-group
       .col-sm-offset-3.col-sm-7
         button.btn.btn-success(type='submit')
