@@ -2,11 +2,14 @@ extends ../layout
 
 block content
 
+  if ads.length == 0
+    p There's no shoes in our database at the moment
+  else
   .container
     .row
       .col-md-12
         div#map-canvas
-        div
-            | Cherche adresse 
-            input#address-input(type='text')
-            button(onclick='searchAddress();') chercher
+        
+        div#addresses
+            each ad in ads
+                input(type='hidden', value=ad.shoes.location)
