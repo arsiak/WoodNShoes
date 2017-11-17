@@ -3,15 +3,12 @@ const User = require('../models/User');
 
 
 exports.postAd = (req, res, next) => {
-	
-	var loc;
-	loc = req.body.address+", "+req.body.city+", "+req.body.country;
   const ad = new Ad({
     description: req.body.descr,
     title: req.body.title.toUpperCase(),
     shoes: {
       brand: req.body.brand.toUpperCase(),
-      location: loc,
+      location: req.body.user_input_autocomplete_address,
       gender: req.body.gender,
       price: req.body.price,
       size: req.body.size,
