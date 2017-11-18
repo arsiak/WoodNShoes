@@ -7,6 +7,6 @@ exports.map = (req, res) => {
 
 exports.getAll = (req, res) => {
    Ad.find((err, docs) => {
-      res.render('account/map', {title : 'Home',"ads": docs});
+      res.render('account/map', {title : 'Map',"ads": docs});
     }).sort({'createdAt': -1});
 };
