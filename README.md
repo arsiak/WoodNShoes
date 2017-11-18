@@ -20,6 +20,13 @@ npm install
 node app.js
 ```
 
+### Testing
+In order to test, a user is available :
+email : john.doe@gmail.com
+password : test
+
+Then you are log, you can check your ads, search ads, add and other action, so let start !
+
 ## Built With
 
 * [sahat/hackathon-starter](https://github.com/sahat/hackathon-starter) - The NodeJs boilerplate
