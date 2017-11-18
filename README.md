@@ -30,6 +30,9 @@ node app.js
 This project was created in accordance to one of our university projects.
 * [Quentin RENOUARD ](https://github.com/Quinou-kun)
 * [Quentin DELAMARRE](https://github.com/windos757)
+* [Luc André](https://github.com/lucandreiut)
+* [Arnaud Roziak ](https://github.com/arsiak)
+
 
 License
 -------
