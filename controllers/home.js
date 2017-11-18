@@ -20,12 +20,12 @@ exports.index = (req, res) => {
   {
     if(!req.query.page || req.query.page ===1){
       Ad.find((err, docs) => {
-        res.render('home', {title : 'Home',ads: docs, url: req.path, pages: num, current_page : current });
+        res.render('home', {title : 'Home',ads: docs, url: req.path, pages: num, current_page : current});
       }).sort({'createdAt': -1}).limit(11);
 
     }else{
       Ad.find((err, docs) => {
-        res.render('home', {title : 'Home',ads: docs, url: req.path , pages: num, current_page : current });
+        res.render('home', {title : 'Home',ads: docs, url: req.path , pages: num, current_page : current});
       }).sort({'createdAt': -1}).skip(10*req.query.page-9).limit(10);
     }
 
