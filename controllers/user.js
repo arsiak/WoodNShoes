@@ -359,13 +359,14 @@ exports.postForgot = (req, res, next) => {
 };
 
 exports.getUserInfo = (req, res) => {
-  User.findById(req.param('id'), (err, docs) =>{
-    res.render('user', {title : 'User', user : docs});
+  User.findById(req.param('id'), (err, docs) => {
+    res.render('user', { title: 'User', user: docs });
   });
 };
 
 exports.getAllAds = (req, res) => {
-  Ad.find((err, docs) => {
-    res.render('userAdsList', {title: 'Ads list', ads: docs});
-  }).where("user",req.param('id')).sort({'createdAt': -1});
+  Ad.find().populate('user').where('user', req.param('id')).sort({ createdAt: -1 })
+    .exec((err, docs) => {
+      res.render('userAdsList', { title: 'Ads list', ads: docs });
+    });
 };

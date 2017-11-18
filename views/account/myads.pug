@@ -19,14 +19,18 @@ block content
       else
         h4.available This ad is not reserved yet
       p
-        a(data-toggle='collapse', href='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+        a(data-toggle='collapse', href='#collapse'+ad._id, aria-expanded='false', aria-controls='collapseExample')
           h4 See more or update
             | &nbsp
             i.fa.fa-chevron-circle-down
 
 
-      #collapseExample.collapse
-        img(src="/uploads/"+ad.shoes.picture)
+      div(id='collapse'+ad._id, class='collapse')
+        .collapse-img
+          if ad.shoes.picture
+            img(src="/uploads/" + ad.shoes.picture)
+          else
+            img(src="/uploads/no")
         form.form-horizontal(action='/account/myads/update/'+ ad._id, method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
           .form-group

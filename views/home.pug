@@ -56,9 +56,9 @@ block content
               | #{ad.title}
         .card-body
           .card-info
-            p Size : #{ad.shoes.size}
+            h3 Size : #{ad.shoes.size}
           .card-info
-            p #{ad.shoes.price} $ per day
+            h3 #{ad.shoes.price} $ per day
           .card-info-img
             if ad.shoes.picture
               img(src="/uploads/"+ad.shoes.picture)
