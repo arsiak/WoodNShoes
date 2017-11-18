@@ -9023,8 +9023,7 @@ a {
   background-color: rgba(0, 0, 0, 0.03); }
 
 nav {
-  text-align: center;
-}
+  text-align: center; }
 
 .reserved {
   color: red; }
@@ -9040,4 +9039,3 @@ nav {
 .collapse-img img {
   max-width: 100%;
   max-height: 100%; }
-

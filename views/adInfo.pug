@@ -20,8 +20,10 @@ block content
     div.ad-info-content
       h4.ad-info-content-descritpion #{ad.description}
       div.ad-info-content-img
-        if(ad.shoes.picture)
+        if ad.shoes.picture
           img(src="/uploads/" + ad.shoes.picture)
+        else
+          img(src="/uploads/no")
       div#map-canvas
       h4#adress #{ad.shoes.location}
       div.ad-info-content-misc
