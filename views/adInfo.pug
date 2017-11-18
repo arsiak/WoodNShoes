@@ -1,26 +1,36 @@
 extends layout
 
 block content
+  div.ad-info
+    div.ad-info-header
+      div.page-header
+        h3 #{ad.title}
 
-  h3 #{ad.title}
-  img(src="/uploads/" + ad.shoes.picture)
-  p #{ad.description}
-  p Brand : #{ad.shoes.brand}
-  p Size : #{ad.shoes.size}
-  p Gender : #{ad.shoes.gender}
-    if(ad.shoes.gender === 'male')
-      | &nbsp;
-      i.fa.fa-mars
-    else if(ad.shoes.gender ==='female')
-      | &nbsp;
-      i.fa.fa-venus
-    else
-      | &nbsp;
-      i.fa.fa-neuter
-  p Price : #{ad.shoes.price}
-  p#adress #{ad.shoes.location}
-  div#map-canvas
-  h3 Owner
-  a(href='/user/'+ad.user._id) #{ad.user.profile.name}
-  p #{ad.user.profile.phone}
-  a(href='/user/'+ad.user._id+'/ads') I want to consult all #{ad.user.profile.name}'s ads
+      div.ad-info-header-price
+        h3 Price : #{ad.shoes.price} $
+    div.ad-info-owner
+      h3 Owner :
+        a(href='/user/' + ad.user._id) #{ad.user.profile.name}
+      p #{ad.user.profile.phone}
+    div.ad-info-content
+      p.ad-info-content-descritpion #{ad.description}
+      div.ad-info-content-img
+        if(ad.shoes.picture)
+          img(src="/uploads/" + ad.shoes.picture)
+      div#map-canvas
+      p#adress #{ad.shoes.location}
+      div.ad-info-content-misc
+        p Brand : #{ad.shoes.brand}
+        p Size : #{ad.shoes.size}
+        p Gender : #{ad.shoes.gender}
+          if(ad.shoes.gender === 'male')
+            | &nbsp;
+            i.fa.fa-mars
+          else if(ad.shoes.gender ==='female')
+            | &nbsp;
+            i.fa.fa-venus
+          else
+            | &nbsp;
+            i.fa.fa-neuter
+    div.ad-info-footer
+      a(href='/user/'+ad.user._id+'/ads') I want to consult all #{ad.user.profile.name}'s ads
