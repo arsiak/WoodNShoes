@@ -12,12 +12,14 @@ exports.postAd = (req, res, next) => {
       gender: req.body.gender,
       price: req.body.price,
       size: req.body.size,
-      picture : req.file.filename
+
     },
     user: req.user,
     reserved : false
   });
 
+  if (req.file)
+    ad.shoes.picture = req.file.filename;
 
   ad.save((err) => {
     if (err) { return next(err); }

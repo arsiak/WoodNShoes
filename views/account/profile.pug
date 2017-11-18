@@ -33,10 +33,6 @@ block content
       .col-sm-6
         input(type="tel" name="phone" pattern="^[0-9]{10}$" value = user.profile.phone)
     .form-group
-      label.col-sm-3.control-label(for='location') Location
-      .col-sm-7
-        input.form-control(type='text', name='location', id='location', value=user.profile.location)
-    .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn.btn-primary(type='submit')
           i.fa.fa-pencil

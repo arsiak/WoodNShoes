@@ -8750,8 +8750,7 @@ textarea {
 #map-canvas {
   margin: 0;
   padding: 0;
-  height: 400px;
-  max-width: none; }
+  height: 80vh; }
 
 #map-canvas img {
   max-width: none !important; }
@@ -8821,5 +8820,8 @@ a {
 
 .ad-info-footer {
   background-color: grey; }
+
+nav {
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
