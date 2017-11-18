@@ -6,12 +6,13 @@
         span.icon-bar
         span.icon-bar
         span.icon-baruser
-      a.navbar-brand(href='/')
-        | W&S
+      a.navbar-brand(href='/') Wood N' Shoes
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li(class=(title === 'Home') ? 'active' : undefined)
-          a(href='/') Home
+          a(href='/')
+            i.fa.fa-home
+            | Home
         li(class=(title === 'Map') ? 'active' : undefined)
           a(href='/Map') 
             i.fa.fa-map-marker
@@ -50,5 +51,3 @@
                 a(href='/logout')
                   i.fa.fa-sign-out
                   span= 'Log out'
-        li(class=(title === 'What ?') ? 'active' : undefined)
-          a(href='/') What is Wood N' Shoes ?
