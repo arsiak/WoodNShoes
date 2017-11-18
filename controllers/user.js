@@ -3,6 +3,7 @@ const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
 const passport = require('passport');
 const User = require('../models/User');
+const Ad = require('../models/Ad');
 
 /**
  * GET /login
@@ -139,8 +140,7 @@ exports.postUpdateProfile = (req, res, next) => {
     user.email = req.body.email || '';
     user.profile.name = req.body.name || '';
     user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
+    user.profile.phone = req.body.phone || '';
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
@@ -194,23 +194,6 @@ exports.postDeleteAccount = (req, res, next) => {
   });
 };
 
-/**
- * GET /account/unlink/:provider
- * Unlink OAuth provider.
- */
-exports.getOauthUnlink = (req, res, next) => {
-  const provider = req.params.provider;
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    user[provider] = undefined;
-    user.tokens = user.tokens.filter(token => token.kind !== provider);
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.flash('info', { msg: `${provider} account has been unlinked.` });
-      res.redirect('/account');
-    });
-  });
-};
 
 /**
  * GET /reset/:token
@@ -373,4 +356,17 @@ exports.postForgot = (req, res, next) => {
     .then(sendForgotPasswordEmail)
     .then(() => res.redirect('/forgot'))
     .catch(next);
+};
+
+exports.getUserInfo = (req, res) => {
+  User.findById(req.param('id'), (err, docs) => {
+    res.render('user', { title: 'User', user: docs });
+  });
+};
+
+exports.getAllAds = (req, res) => {
+  Ad.find().populate('user').where('user', req.param('id')).sort({ createdAt: -1 })
+    .exec((err, docs) => {
+      res.render('userAdsList', { title: 'Ads list', ads: docs });
+    });
 };

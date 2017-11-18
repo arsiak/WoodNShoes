@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Add Advert
+  form.form-horizontal(id='advert-form', method='POST', enctype='multipart/form-data')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='title') Title
+      .col-sm-7
+        input.form-control(type='string', name='title', id='title', placeholder='Title your advert', autofocus, required)
+    .form-group
+      label.col-sm-3.control-label(for='descr') Description
+      .col-sm-7
+        input.form-control(type='string', name='descr', id='descr', placeholder='Describe your advert', required)
+    .form-group
+      label.col-sm-3.control-label(for='brand') Brand
+      .col-sm-7
+        input.form-control(type='string', name='brand', id='brand', placeholder='Brand', required)
+    .form-group
+      label.col-sm-3.control-label(for='size') Size
+      .col-sm-7
+        input.form-control(type='number', name='size', id='size', placeholder='Size', required)
+    .form-group
+      label.col-sm-3.control-label(for='size') Price per day
+      .col-sm-7
+        input.form-control(type='number', name='price', id='price', placeholder='Price', required)
+    .form-group
+      label.col-sm-3.control-label(for='size') Size
+      .col-sm-7
+        input.form-control(type='file', name='picture', id='picture', accept='image/*')
+    .form-group
+      label.col-sm-3.control-label Gender
+      .col-sm-6
+        label.radio.col-sm-3
+          input(type='radio', name='gender', value='male', data-toggle='radio')
+          span Male
+        label.radio.col-sm-3
+          input(type='radio', name='gender', value='female', data-toggle='radio')
+          span Female
+        label.radio.col-sm-3
+          input(type='radio', checked name='gender', value='other', data-toggle='radio')
+          span Both
+    .form-group
+      label.col-sm-3.control-label Address
+      .col-sm-7
+        input#user_input_autocomplete_address.form-control(name='user_input_autocomplete_address', placeholder='Start typing your address...' required)
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-plus
+          | Add

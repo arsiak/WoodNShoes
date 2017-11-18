@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  div.ad-info
+    div.ad-info-header
+      div.page-header
+        h3 #{ad.title}
+
+      div.ad-info-header-price
+        h3 #{ad.shoes.price} $ per day
+    div.ad-info-owner
+      h3 Owner :
+        a(href='/user/' + ad.user._id) #{ad.user.profile.name}
+      h4 Contact the owner :
+        p
+          i.fa.fa-phone
+          | #{ad.user.profile.phone}&nbsp; | &nbsp;
+          i.fa.fa-envelope
+          | #{ad.user.email}
+    div.ad-info-content
+      h4.ad-info-content-descritpion #{ad.description}
+      div.ad-info-content-img
+        if ad.shoes.picture
+          img(src="/uploads/" + ad.shoes.picture)
+        else
+          img(src="/uploads/no")
+      div#map-canvas
+      h4#adress #{ad.shoes.location}
+      div.ad-info-content-misc
+        h4 Brand : #{ad.shoes.brand}
+        h4 Size : #{ad.shoes.size}
+        h4 Gender : #{ad.shoes.gender} &nbsp;
+          if(ad.shoes.gender === 'male')
+            i.fa.fa-mars(style='color : deepSkyblue')
+          else if (ad.shoes.gender === 'female')
+            i.fa.fa-venus(style='color : pink')
+          else
+            i.fa.fa-neuter(style='color : black')
+    div.ad-info-footer
+      h4
+        a(href='/user/'+ad.user._id+'/ads') I want to consult all #{ad.user.profile.name}'s ads

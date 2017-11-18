@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  if ads.length === 0
+    p This user have no ads bro !
+  else
+  each ad in ads
+    if !ad.reserved
+      - var date = new Date
+      .card
+        .card-header
+          a(href='/ad/' + ad._id)
+            h3
+              if(ad.shoes.gender === 'male')
+                i.fa.fa-mars(style='color : deepSkyblue')
+              else if (ad.shoes.gender === 'female')
+                i.fa.fa-venus(style='color : pink')
+              else
+                i.fa.fa-neuter(style='color : black')
+              | #{ad.title}
+          p Owned by #{ad.user.profile.name}
+        .card-body
+          .card-info
+            p Size : #{ad.shoes.size}
+          .card-info
+            p #{ad.shoes.price} $ per day
+          .card-info-img
+            img(src="/uploads/" + ad.shoes.picture)
+        .card-footer
+          .card-footer-date
+            if(ad.createdAt.getDay() === date.getDay())
+              p Today, #{ad.createdAt.getHours()}:#{ad.createdAt.getMinutes()}
+            else
+              p #{ad.createdAt.toLocaleDateString()}
+          .card-footer-location
+            i.fa.fa-map-marker
+            | #{ad.shoes.location}

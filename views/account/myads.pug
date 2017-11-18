@@ -1,0 +1,101 @@
+extend ../layout
+
+block content
+
+  if ads.length == 0
+    p You have no ads bro !
+  else
+  each ad in ads
+
+    .page-header
+
+
+      h3 #{ad.title}
+      if ad.reserved
+        h4.reserved
+          i.fa.fa-exclamation-triangle
+          | This ad is reserved, nobody can see it !
+          i.fa.fa-exclamation-triangle
+      else
+        h4.available This ad is not reserved yet
+      p
+        a(data-toggle='collapse', href='#collapse'+ad._id, aria-expanded='false', aria-controls='collapseExample')
+          h4 See more or update
+            | &nbsp
+            i.fa.fa-chevron-circle-down
+
+
+      div(id='collapse'+ad._id, class='collapse')
+        .collapse-img
+          if ad.shoes.picture
+            img(src="/uploads/" + ad.shoes.picture)
+          else
+            img(src="/uploads/no")
+        form.form-horizontal(action='/account/myads/update/'+ ad._id, method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            label.col-sm-3.control-label(for='title') Title
+            .col-sm-7
+              input.form-control(type='text', name='title', id='title', value=ad.title required)
+          .form-group
+            label.col-sm-3.control-label(for='description') Description
+            .col-sm-7
+              input.form-control(type='text', name='description', id='description', value=ad.description required)
+          .form-group
+            label.col-sm-3.control-label(for='size') Shoes size
+            .col-sm-7
+              input.form-control(type='text', name='size', id='size', value=ad.shoes.size required)
+          .form-group
+            label.col-sm-3.control-label(for='size') Shoes brand
+            .col-sm-7
+              input.form-control(type='text', name='brand', id='brand', value=ad.shoes.brand required)
+          .form-group
+            label.col-sm-3.control-label Gender
+            .col-sm-6
+              label.radio.col-sm-3
+                input(type='radio', checked=ad.shoes.gender == 'male', name='gender', value='male', data-toggle='radio')
+                span Male
+                | &nbsp;
+                i.fa.fa-mars
+              label.radio.col-sm-3
+                input(type='radio', checked=ad.shoes.gender == 'female', name='gender', value='female', data-toggle='radio')
+                span Female
+                | &nbsp;
+                i.fa.fa-venus
+              label.radio.col-sm-3
+                input(type='radio', checked=ad.shoes.gender == 'other', name='gender', value='both', data-toggle='radio')
+                span Both
+                | &nbsp;
+                i.fa.fa-neuter
+
+          .form-group
+            label.col-sm-3.control-label(for='price') Shoes price
+            .col-sm-7
+              input.form-control(type='number', name='price', id='price', value=ad.shoes.price required)
+          .form-group
+            .col-sm-offset-3.col-sm-4
+              button.btn.btn.btn-primary(type='submit')
+                i.fa.fa-pencil
+                | Update !
+
+        form.form-horizontal(action='/account/myads/delete/' + ad._id, method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            .col-sm-offset-3.col-sm-4
+              button.btn.btn.btn-primary(type='submit')
+                i.fa.fa-trash
+                | Delete !
+
+
+        form.form-horizontal(action='/account/myads/reserve/' + ad._id, method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            .col-sm-offset-3.col-sm-4
+              button.btn.btn.btn-primary(type='submit')
+                i.fa.fa-trash
+                if ad.reserved
+                  | Put this ad as available !
+                else
+                  | Put this ad as reserved !
+
+

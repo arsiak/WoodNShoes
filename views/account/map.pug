@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Welcome on our map ! If your browser supports it, you can see all of the ads we have and then search ads close to you !
+    p When it's close enough, click on a marker, you will be able to see the shoes details and get to the offer page.
+  if ads.length == 0
+    p There's no shoes in our database at the moment
+  else
+    div#map-canvas
+
+    div#infos
+      each ad in ads
+        if !ad.reserved
+          input(type='hidden', value=ad.shoes.location, class='addresses')
+          input(type='hidden', value=ad.title, class='titles')
+          input(type='hidden', value=ad.description, class='descr')
+          input(type='hidden', value=ad.shoes.picture, class='imgs')
+          input(type='hidden', value=ad._id, class='links')
