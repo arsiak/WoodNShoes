@@ -36,13 +36,7 @@ block content
                   <i class="fa fa-search" aria-hidden="true"></i>
 
 
-
-
-
-
-
-
-  h3 Derniers ajouts
+  h3 Last ads
   if ads.length == 0
     p There is no ads bro, but you can place the first ad :)
   else
@@ -74,7 +68,11 @@ block content
         .card-footer
           .card-footer-date
             if(ad.createdAt.getDay() == date.getDay())
-              p Today, #{ad.createdAt.getHours()}:#{ad.createdAt.getMinutes()}
+              p
+              if ad.createdAt.getMinutes() < 10
+                | Today, #{ad.createdAt.getHours()}:0#{ad.createdAt.getMinutes()}
+              else
+                | Today, #{ad.createdAt.getHours()}:#{ad.createdAt.getMinutes()}
             else
               p #{ad.createdAt.toLocaleDateString()}
           .card-footer-location

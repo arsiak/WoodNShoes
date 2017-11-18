@@ -26,8 +26,8 @@ block content
 
 
       #collapseExample.collapse
-        img(src="/uploads/" + ad.shoes.picture)
-        form.form-horizontal(action='/account/myads/update/' + ad._id, method='POST')
+        img(src="/uploads/"+ad.shoes.picture)
+        form.form-horizontal(action='/account/myads/update/'+ ad._id, method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
           .form-group
             label.col-sm-3.control-label(for='title') Title
