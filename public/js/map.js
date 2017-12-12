@@ -1,12 +1,12 @@
-var map;
-var marker;
-var markers = [];
-var infoWindow ;
+let map;
+let marker;
+const markers = [];
+let infoWindow;
 
 function initialize() {
 	
-  var mapOptions = {
-    center: new google.maps.LatLng(40.680898,-8.684059),
+  const mapOptions = {
+    center: new google.maps.LatLng(40.680898, -8.684059),
     zoom: 3,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
@@ -17,16 +17,16 @@ function initialize() {
 	
 	if(document.getElementById('infos')){
 	
-		var infoWindow = new google.maps.InfoWindow({map: map});
+		const infoWindow = new google.maps.InfoWindow({map: map});
 
         // Try HTML5 geolocation.
 		
 			if (navigator.geolocation) {
 			  navigator.geolocation.getCurrentPosition(function(position) {
-				var pos = {
-				  lat: position.coords.latitude,
-				  lng: position.coords.longitude
-				};
+				let pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
 
 				infoWindow.setPosition(pos);
 				infoWindow.setContent("You're here!");
@@ -47,7 +47,7 @@ google.maps.event.addDomListener(window, "load", initialize);
 
 //AJAX with javascript
 function ajaxGet(url, callback) {
-    var req = new XMLHttpRequest();
+    let req = new XMLHttpRequest();
     req.open("GET", url);
     req.addEventListener("load", function () {
         if (req.status >= 200 && req.status < 400) {

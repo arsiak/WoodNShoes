@@ -1,5 +1,6 @@
 const User = require('./models/User');
 const Ad = require('./models/Ad');
+const Event = require('./models/Event');
 
 const verification = User.find().where('email', 'john.doe@gmail.com').exec((err, docs) => {
   if (docs.length === 0){
@@ -15,6 +16,16 @@ const verification = User.find().where('email', 'john.doe@gmail.com').exec((err,
       }
     });
     user.save();
+
+    const event = new Event({
+      title: 'Concert de David Pujadas',
+      description: 'Venez voir le concert en live de David Pujadas feat Johnny !',
+      lat : 48.667848,
+      lng : 6.154584,
+      date : new Date(),
+    });
+    event.save();
+
 
     const ad1 = new Ad({
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id porta libero, vel venenatis massa. Suspendisse euismod dui a malesuada lacinia. Cras ac eros sit amet mi convallis laoreet sed at ex. Aliquam aliquet sed quam bibendum convallis. Nunc aliquet, nunc non maximus pharetra, velit eros porta lectus, id lobortis purus nisl a sem. Suspendisse scelerisque in orci id hendrerit. Aenean sit amet auctor orci. Etiam vitae auctor nisl. Ut sapien sapien, pharetra vitae risus in, convallis vulputate orci. Morbi a magna ullamcorper elit facilisis convallis. Maecenas eget imperdiet sapien. Nunc id ligula vel urna accumsan dictum in sed ante. Proin fermentum ullamcorper quam, non eleifend nisi facilisis vitae.',
